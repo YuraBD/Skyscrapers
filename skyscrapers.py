@@ -25,21 +25,27 @@ False
 3) check_not_finished_board
 Check if skyscraper board is not finished, i.e., '?' present on the game board.
 Return True if finished, False otherwise.
->>> check_not_finished_board(['***21**', '4?????*', '4?????*', '*?????5', '*?????*', '*?????*', '*2*1***'])
+>>> check_not_finished_board(['***21**', '4?????*', '4?????*',\
+                              '*?????5', '*?????*', '*?????*', '*2*1***'])
 False
->>> check_not_finished_board(['***21**', '412453*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***'])
+>>> check_not_finished_board(['***21**', '412453*', '423145*',\
+                              '*543215', '*35214*', '*41532*', '*2*1***'])
 True
->>> check_not_finished_board(['***21**', '412453*', '423145*', '*5?3215', '*35214*', '*41532*', '*2*1***'])
+>>> check_not_finished_board(['***21**', '412453*', '423145*',\
+                              '*5?3215', '*35214*', '*41532*', '*2*1***'])
 False
 
 4) check_uniqueness_in_rows
 Check buildings of unique height in each row.
 Return True if buildings in a row have unique length, False otherwise.
->>> check_uniqueness_in_rows(['***21**', '412453*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***'])
+>>> check_uniqueness_in_rows(['***21**', '412453*', '423145*',\
+                              '*543215', '*35214*', '*41532*', '*2*1***'])
 True
->>> check_uniqueness_in_rows(['***21**', '452453*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***'])
+>>> check_uniqueness_in_rows(['***21**', '452453*', '423145*',\
+                              '*543215', '*35214*', '*41532*', '*2*1***'])
 False
->>> check_uniqueness_in_rows(['***21**', '412453*', '423145*', '*553215', '*35214*', '*41532*', '*2*1***'])
+>>> check_uniqueness_in_rows(['***21**', '412453*', '423145*',\
+                              '*553215', '*35214*', '*41532*', '*2*1***'])
 False
 
 5) check_horizontal_visibility
@@ -47,15 +53,19 @@ Check row-wise visibility (left-right and vice versa)
 Return True if all horizontal hints are satisfiable,
  i.e., for line 412453* , hint is 4, and 1245 are the four buildings
   wthat could be observed from the hint looking to the right.
->>> check_horizontal_visibility(['***21**', '412453*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***'])
+>>> check_horizontal_visibility(['***21**', '412453*', '423145*',\
+                                 '*543215', '*35214*', '*41532*', '*2*1***'])
 True
->>> check_horizontal_visibility(['***21**', '452453*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***'])
+>>> check_horizontal_visibility(['***21**', '452453*', '423145*',\
+                                 '*543215', '*35214*', '*41532*', '*2*1***'])
 False
->>> check_horizontal_visibility(['***21**', '452413*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***'])
+>>> check_horizontal_visibility(['***21**', '452413*', '423145*',\
+                                 '*543215', '*35214*', '*41532*', '*2*1***'])
 False
 
 6) check_columns
-Check column-wise compliance of the board for uniqueness (buildings of unique height) and visibility (top-bottom and vice versa).
+Check column-wise compliance of the board for uniqueness (buildings of unique height)
+ and visibility (top-bottom and vice versa).
 Same as for horizontal cases, but aggregated in one function for vertical case, i.e. columns.
 >>> check_columns(['***21**', '412453*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***'])
 True
@@ -112,11 +122,14 @@ def check_not_finished_board(board: list) -> bool:
 
     Return True if finished, False otherwise.
 
-    >>> check_not_finished_board(['***21**', '4?????*', '4?????*', '*?????5', '*?????*', '*?????*', '*2*1***'])
+    >>> check_not_finished_board(['***21**', '4?????*', '4?????*',\
+                                  '*?????5', '*?????*', '*?????*', '*2*1***'])
     False
-    >>> check_not_finished_board(['***21**', '412453*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***'])
+    >>> check_not_finished_board(['***21**', '412453*', '423145*',\
+                                  '*543215', '*35214*', '*41532*', '*2*1***'])
     True
-    >>> check_not_finished_board(['***21**', '412453*', '423145*', '*5?3215', '*35214*', '*41532*', '*2*1***'])
+    >>> check_not_finished_board(['***21**', '412453*', '423145*',\
+                                  '*5?3215', '*35214*', '*41532*', '*2*1***'])
     False
     """
     for row in board[1:-1]:
@@ -131,11 +144,14 @@ def check_uniqueness_in_rows(board: list) -> bool:
 
     Return True if buildings in a row have unique length, False otherwise.
 
-    >>> check_uniqueness_in_rows(['***21**', '412453*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***'])
+    >>> check_uniqueness_in_rows(['***21**', '412453*', '423145*',\
+                                  '*543215', '*35214*', '*41532*', '*2*1***'])
     True
-    >>> check_uniqueness_in_rows(['***21**', '452453*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***'])
+    >>> check_uniqueness_in_rows(['***21**', '452453*', '423145*',\
+                                  '*543215', '*35214*', '*41532*', '*2*1***'])
     False
-    >>> check_uniqueness_in_rows(['***21**', '412453*', '423145*', '*553215', '*35214*', '*41532*', '*2*1***'])
+    >>> check_uniqueness_in_rows(['***21**', '412453*', '423145*',\
+                                  '*553215', '*35214*', '*41532*', '*2*1***'])
     False
     """
     c_board = board.copy()
@@ -156,11 +172,14 @@ def check_horizontal_visibility(board: list) -> bool:
      i.e., for line 412453* , hint is 4, and 1245 are the four buildings
       that could be observed from the hint looking to the right.
 
-    >>> check_horizontal_visibility(['***21**', '412453*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***'])
+    >>> check_horizontal_visibility(['***21**', '412453*', '423145*',\
+                                     '*543215', '*35214*', '*41532*', '*2*1***'])
     True
-    >>> check_horizontal_visibility(['***21**', '452453*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***'])
+    >>> check_horizontal_visibility(['***21**', '452453*', '423145*',\
+                                     '*543215', '*35214*', '*41532*', '*2*1***'])
     False
-    >>> check_horizontal_visibility(['***21**', '452413*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***'])
+    >>> check_horizontal_visibility(['***21**', '452413*', '423145*',\
+                                     '*543215', '*35214*', '*41532*', '*2*1***'])
     False
     """
     for row in board[1:-1]:
@@ -180,7 +199,8 @@ def check_horizontal_visibility(board: list) -> bool:
 
 def check_columns(board: list) -> bool:
     """
-    Check column-wise compliance of the board for uniqueness (buildings of unique height) and visibility (top-bottom and vice versa).
+    Check column-wise compliance of the board for uniqueness (buildings of unique height)
+     and visibility (top-bottom and vice versa).
 
     Same as for horizontal cases, but aggregated in one function for vertical case, i.e. columns.
 
